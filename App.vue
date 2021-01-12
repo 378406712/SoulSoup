@@ -118,7 +118,7 @@
 <style>
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
-
+	@import 'App.css'
 	.nav-list {
 		display: flex;
 		flex-wrap: wrap;

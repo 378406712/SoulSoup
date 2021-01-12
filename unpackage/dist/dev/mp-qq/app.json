@@ -1,5 +1,6 @@
 {
   "pages": [
+    "views/index/index",
     "pages/index/index",
     "pages/basics/layout",
     "pages/basics/background",
@@ -12,13 +13,10 @@
     "pages/basics/progress",
     "pages/basics/shadow",
     "pages/basics/loading",
-    "pages/component/bar",
     "pages/component/nav",
     "pages/component/list",
     "pages/component/card",
-    "pages/component/form",
     "pages/component/timeline",
-    "pages/component/chat",
     "pages/component/swiper",
     "pages/component/modal",
     "pages/component/steps",

@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"postcss": false,
 		"minified": false,
@@ -18,13 +18,9 @@
 	},
 	"compileType": "miniprogram",
 	"projectname": "soul-soup",
-	"qqappid": "1111126632",
+	"qqappid": "1108100302",
 	"qqLibVersion": "1.6.3",
-	"scripts": {
-		"beforeCompile": "",
-		"beforePreview": "",
-		"beforeUpload": ""
-	},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,

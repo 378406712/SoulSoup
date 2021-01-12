@@ -1,0 +1,22 @@
+@media (max-width: 860px) .pattern-attachment-img {
+	height: 280px;
+}
+
+@media (max-width: 860px) .pattern-center h1.cat-title,
+.pattern-center h1.entry-title,
+.single-center .single-header h1.entry-title {
+	font-size: 26px;
+}
+
+@media (max-width: 860px) .site-main {
+		padding: 15px 0 0;
+	}
+	
+	@media (max-width: 860px) .toc-container {
+		display: none;
+	}
+	@media (max-width: 500px) .poem-wrap {
+		margin-top: 60px;
+		margin-bottom: 20px;
+		border-top: 2px solid #797979;
+	}
