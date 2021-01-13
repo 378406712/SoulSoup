@@ -1,6 +1,5 @@
 {
   "pages": [
-    "views/index/index",
     "pages/index/index",
     "pages/basics/layout",
     "pages/basics/background",

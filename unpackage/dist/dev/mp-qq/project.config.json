@@ -4,23 +4,27 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": false,
 		"postcss": false,
 		"minified": false,
 		"newFeature": true,
+		"prefetch": false,
+		"remoteDebugLogEnable": false,
+		"uploadWithSourceMap": true,
 		"nodeModules": true,
 		"autoAudits": false,
-		"uploadWithSourceMap": true,
-		"uglifyFileName": true,
-		"remoteDebugLogEnable": false,
-		"prefetch": false
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
 	"projectname": "soul-soup",
-	"qqappid": "1108100302",
+	"qqappid": "touristappid",
 	"qqLibVersion": "1.6.3",
-	"scripts": {},
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
 	"condition": {
 		"search": {
 			"current": -1,
