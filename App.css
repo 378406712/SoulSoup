@@ -9,17 +9,67 @@
 }
 
 @media (max-width: 860px) .site-main {
-		padding: 15px 0 0;
+	padding: 15px 0 0;
+}
+
+@media (max-width: 860px) .toc-container {
+	display: none;
+}
+
+@media (max-width: 500px) .poem-wrap {
+	margin-top: 60px;
+	margin-bottom: 20px;
+	border-top: 2px solid #797979;
+}
+
+body {
+	background-color: #FFFFFF
+}
+
+#h1 {
+	font-size: 2em;
+	margin: .67em 0
+}
+
+#h2 {
+	font-size: 1.5em;
+	margin: .75em 0
+}
+
+#h3 {
+	font-size: 1.17em;
+	margin: .83em 0
+}
+
+#h4 {
+	font-size: 1em;
+	margin: .83em 0
+}
+
+#h5 {
+	font-size: .83em;
+	margin: 1.5em 0
+}
+
+#h6 {
+	font-size: .75em;
+	margin: 1.67em 0
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold
+}
+
+@keyframes blur{
+	from 0{
+		filter:blur(50px)
 	}
-	
-	@media (max-width: 860px) .toc-container {
-		display: none;
+	to{
+		filter:blur(0)
 	}
-	@media (max-width: 500px) .poem-wrap {
-		margin-top: 60px;
-		margin-bottom: 20px;
-		border-top: 2px solid #797979;
-	}
-	body{
-		background-color: #FFFFFF
-	}
+} 

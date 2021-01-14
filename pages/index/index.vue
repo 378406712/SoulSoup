@@ -1,12 +1,14 @@
 <template>
 	<div class="soul-container">
 
-		<div class="pattern-center ">
-			<div class="pattern-attachment-img"> <img src="https://2heng.xin/wp-content/uploads//2017/08/pixiv54839592.png"
-				 data-src="https://2heng.xin/wp-content/uploads//2017/08/pixiv54839592.png" class="lazyload" onerror="imgError(this,3)"
-				 style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"></div>
+		<div class="pattern-center">
+			<div class="pattern-attachment-img">
+				<img v-if="loadOk" src="../../assets/demo.png" class="thumbnail":class="loadOkBlur?'':'lazyload'" alt="">
+				<img @load="lazyload" src="https://2heng.xin/wp-content/uploads//2017/08/pixiv54839592.png" data-src="https://2heng.xin/wp-content/uploads//2017/08/pixiv54839592.png"
+				 class="lazyload" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+			</div>
 			<header class="pattern-header ">
-				<h1 class="entry-title">毒鸡汤</h1>
+				<div id="h1" class="entry-title">毒鸡汤</div>
 			</header>
 		</div>
 		<div id="content" class="site-content">
@@ -17,7 +19,7 @@
 							<div class="poem-wrap">
 								<div class="poem-border poem-left"></div>
 								<div class="poem-border poem-right"></div>
-								<h1>念两句</h1>
+								<div id="h1">念两句{{soup.data}}</div>
 								<p id="poem">{{soup.data}}</p>
 								<p id="info">{{soup.date}}</p>
 							</div>
@@ -33,8 +35,20 @@
 	export default {
 		data() {
 			return {
-				soup: {}
+				soup: {},
+				loadOk:true,
+				loadOkBlur:true
 			}
+		},
+		methods: {
+			lazyload() {
+				this.loadOkBlur =false
+				console.log(1)
+				setTimeout(()=>{
+					this.loadOk = false
+				},1000)
+				console.log(this.loadOk)
+			},
 		},
 		onLoad() {
 			uni.request({
@@ -80,9 +94,6 @@
 		height: 400px;
 	}
 
-	@media (max-width: 860px) .pattern-attachment-img {
-		height: 280px;
-	}
 
 	.pattern-center header.pattern-header {
 		position: absolute;
@@ -93,12 +104,6 @@
 		color: #fff;
 		text-shadow: 2px 2px 10px #000;
 		z-index: 1;
-	}
-
-	@media (max-width: 860px) .pattern-center h1.cat-title,
-	.pattern-center h1.entry-title,
-	.single-center .single-header h1.entry-title {
-		font-size: 26px;
 	}
 
 	.pattern-center:after {
@@ -112,17 +117,11 @@
 		position: absolute;
 	}
 
-	@media (max-width: 860px) .site-main {
-		padding: 15px 0 0;
-	}
 
 	.hentry {
 		margin: 0 0 1.5em;
 	}
 
-	
-
-	
 	.toc {
 		position: sticky;
 		top: 100px;
@@ -139,12 +138,6 @@
 		table-layout: fixed;
 	}
 
-	@media (max-width: 500px) .poem-wrap {
-		margin-top: 60px;
-		margin-bottom: 20px;
-		border-top: 2px solid #797979;
-	}
-
 	.poem-wrap {
 		position: relative;
 		width: 730px;
@@ -154,7 +147,7 @@
 		margin: 80px auto;
 	}
 
-	.poem-wrap h1 {
+	.poem-wrap #h1 {
 		margin: 20px 6px;
 		font-size: 2em !important;
 		position: relative;
@@ -187,5 +180,21 @@
 
 	.entry-content::after {
 		clear: both
+	}
+
+	/* 缩略图 */
+	.thumbnail {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		pointer-events: none;
+		filter: blur(50px);
+		/* this is needed so Safari keeps sharp edges */
+		transform: scale(1);
+		transition: 2.5s filter linear, 2.5s -webkit-filter linear;
+	}
+
+		.lazyload {
+		filter: blur(0px);
 	}
 </style>
