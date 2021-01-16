@@ -26,6 +26,9 @@ body {
 	background-color: #FFFFFF
 }
 
+*{
+	box-sizing:border-box;
+}
 #h1 {
 	font-size: 2em;
 	margin: .67em 0
@@ -66,10 +69,13 @@ h6 {
 }
 
 @keyframes blur{
-	from 0{
+	 0{
 		filter:blur(50px)
 	}
-	to{
+	30%{
+		filter:blur(30px)
+	}
+	100%{
 		filter:blur(0)
 	}
 } 

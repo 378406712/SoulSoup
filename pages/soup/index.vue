@@ -3,7 +3,7 @@
 
 		<div class="pattern-center">
 			<div class="pattern-attachment-img">
-				<img v-if="loadOk" src="../../assets/demo.png" class="thumbnail":class="loadOkBlur?'':'lazyload'" alt="">
+				<img v-if="loadOk" src="../../assets/demo.png" class="thumbnail" :class="loadOkBlur?'':'lazyload'" alt="">
 				<img @load="lazyload" src="https://2heng.xin/wp-content/uploads//2017/08/pixiv54839592.png" data-src="https://2heng.xin/wp-content/uploads//2017/08/pixiv54839592.png"
 				 class="lazyload" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
 			</div>
@@ -14,49 +14,62 @@
 		<div id="content" class="site-content">
 			<div id="primary" class="content-area">
 				<main id="main" class="site-main" role="main">
-					<article id="post-52" class="post-52 page type-page status-publish has-post-thumbnail hentry">
+					<article id="post-52" class="post-52 page type-page status-publish has-post-thumbnail">
 						<div class="entry-content">
 							<div class="poem-wrap">
 								<div class="poem-border poem-left"></div>
 								<div class="poem-border poem-right"></div>
-								<div id="h1">念两句{{soup.data}}</div>
-								<p id="poem">{{soup.data}}</p>
-								<p id="info">{{soup.date}}</p>
+								<div id="h1">念两句</div>
+								<div v-if="soup">
+									<p id="poem">{{soup.data}}</p>
+									<p id="info">{{soup.date}}</p>
+								</div>
+								<div id="info" v-else>
+									加载中...
+								</div>
 							</div>
 						</div>
 					</article>
 				</main>
 			</div>
 		</div>
+
+		<div class="updateSoup" @click="updateSoup">
+			<div class="input">切 换</div>
+		</div>
 	</div>
 </template>
 
 <script>
+	
 	export default {
 		data() {
 			return {
-				soup: {},
-				loadOk:true,
-				loadOkBlur:true
+				soup: null,
+				loadOk: true,
+				loadOkBlur: true
 			}
 		},
 		methods: {
 			lazyload() {
-				this.loadOkBlur =false
-				console.log(1)
-				setTimeout(()=>{
-					this.loadOk = false
-				},1000)
-				console.log(this.loadOk)
+				this.loadOkBlur = false
+				this.loadOk = false
 			},
+			updateSoup() {
+				this.getSoup()
+			},
+			getSoup() {
+				this.soup = null
+				uni.request({
+						url: '/api'
+					})
+					.then(res => {
+						this.soup = res[1].data
+					})
+			}
 		},
 		onLoad() {
-			uni.request({
-					url: '/api'
-				})
-				.then(res => {
-					this.soup = res[1].data
-				})
+			this.getSoup()
 		}
 	}
 </script>
@@ -118,10 +131,6 @@
 	}
 
 
-	.hentry {
-		margin: 0 0 1.5em;
-	}
-
 	.toc {
 		position: sticky;
 		top: 100px;
@@ -144,7 +153,7 @@
 		max-width: 80%;
 		border: 2px solid #797979;
 		text-align: center;
-		margin: 80px auto;
+		margin: 50px auto;
 	}
 
 	.poem-wrap #h1 {
@@ -194,7 +203,32 @@
 		transition: 2.5s filter linear, 2.5s -webkit-filter linear;
 	}
 
-		.lazyload {
+	.lazyload {
 		filter: blur(0px);
+	}
+
+	.updateSoup {
+		margin: 0 auto;
+		max-width: 80%;
+		padding-bottom: 50px
+	}
+
+	.input {
+		color: #000;
+		border: 1px solid #000;
+		background: 0 0 !important;
+		margin: 0;
+		padding: 15px 25px;
+		text-transform: none;
+		transition: all .1s ease-out;
+		box-shadow: none;
+		text-shadow: none;
+		text-align: center;
+		border-radius: 3px;
+	}
+
+	.updateSoup:hover .input {
+		border-color: #FE9600;
+		color: #FE9600
 	}
 </style>
